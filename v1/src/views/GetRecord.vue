@@ -8,11 +8,11 @@
       <button @click="getRecord()" class="btn btn-warning d-inline-block me-2 m-2">Get</button>
       <table class="table table-striped mt-5">
         <thead>
-            <th class="bg-dark text-white">Number</th>
-            <th class="bg-dark text-white">First Name</th>
-            <th class="bg-dark text-white">Last Name</th>
-            <th class="bg-dark text-white">Age</th>
-            <th class="bg-dark text-white">Action</th>
+            <th class="bg-dark text-white">Number </th>
+            <th class="bg-dark text-white">First Name </th>
+            <th class="bg-dark text-white">Last Name  </th>
+            <th class="bg-dark text-white">Age </th>
+            <th class="bg-dark text-white">Action Z</th>
         </thead>
         <tbody>
             <tr v-for="(user, i) in users" :key="i">
