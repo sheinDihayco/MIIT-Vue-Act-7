@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <Navigation/>
+    </div>
   <main class="p-5"> <!--bg-warning-->
     <div class="card">
       <div class="card-header bg-info">
@@ -36,33 +39,35 @@
 
 <script lang="ts">
 
-import axios from 'axios';
-import Swal from 'sweetalert2';
+    import axios from 'axios';
+    import Swal from 'sweetalert2';
+    import Navigation from '@/components/Navigation.vue';
 
 export default {
-  name: "HomeView",
-  data() {
-    return {
-      fname: "",
-      lname: "",
-      age: 0
-    }
-  },
-  methods: {
-    async insertRecord() {
-      await axios.get("http://127.0.0.1:8000/api/user/insertRecord/" + this.fname + "/" + this.lname + "/" + this.age).then( async (response) => {
-        Swal.fire({
-          title: "Successful",
-          text: response.data?.message,
-          icon: "success"
-        }).then(async () => {
-          this.fname = '';
-          this.lname = '';
-          this.age = 0;
+    name: "InsertRecord",
+    components: {Navigation},
+    data() {
+        return {
+        fname: "",
+        lname: "",
+        age: 0
+        }
+    },
+    methods: {
+        async insertRecord() {
+        await axios.get("http://127.0.0.1:8000/api/user/insertRecord/" + this.fname + "/" + this.lname + "/" + this.age).then( async (response) => {
+            Swal.fire({
+            title: "Successful",
+            text: response.data?.message,
+            icon: "success"
+            }).then(async () => {
+                this.fname = '';
+                this.lname = '';
+                this.age = 0;
 
-        })
-      }) ;
-    }
+            })
+        }) ;
+        }
    
   },
   }
