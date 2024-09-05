@@ -12,7 +12,7 @@
             <th class="bg-dark text-white">First Name </th>
             <th class="bg-dark text-white">Last Name  </th>
             <th class="bg-dark text-white">Age </th>
-            <th class="bg-dark text-white">Action Z</th>
+            <th class="bg-dark text-white">Action</th>
         </thead>
         <tbody>
             <tr v-for="(user, i) in users" :key="i">
