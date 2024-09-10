@@ -12,7 +12,8 @@
             <th class="bg-dark text-white">First Name </th>
             <th class="bg-dark text-white">Last Name  </th>
             <th class="bg-dark text-white">Age </th>
-            <th class="bg-dark text-white">Action</th>
+            <th class="bg-dark text-white">Edit</th>
+            <th class="bg-dark text-white">Delete</th>
         </thead>
         <tbody>
             <tr v-for="(user, i) in users" :key="i">
@@ -21,6 +22,8 @@
                 <td>{{ user?.lname }}</td>
                 <td>{{ user?.age }}</td>
                 <td><button class="btn btn-primary btn-sm" @click="editAge(user)">Edit</button></td>
+                <td>
+                <button class="btn btn-danger btn-sm" @click="deleteRecords(user)">Delete</button></td>
             </tr>
         </tbody>
       </table>
@@ -66,8 +69,23 @@ export default {
           }
       });
      
+    },
+    async deleteRecords(user: any) {
+      Swal.fire({
+        title: "Confirmation",
+        text: "Delete selected user?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axios.get("http://127.0.0.1:8000/api/user/deleteByID/" + user?.dataid).then( async () => {
+            this.getRecord();
+          });
+         }
+      });
     }
-  },
+  }
 
 }
 </script>
